@@ -1,0 +1,17 @@
+# Ambiente virtual (independentemente do nome que uses)
+# .venv/
+# .analisePandas/
+# env/
+# venv/
+
+# Cache do Python e Jupyter Notebooks
+# __pycache__/
+# .ipynb_checkpoints/
+# .pytest_cache/
+
+# Sistema operativo
+# .DS_Store
+# Thumbs.db
+
+# Ficheiros sensíveis ou dados locais muito pesados (opcional)
+# data/ (podes descomentar se não quiseres enviar os dados para o GitHub)
