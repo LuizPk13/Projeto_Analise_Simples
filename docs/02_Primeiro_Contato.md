@@ -24,9 +24,18 @@
 
 | # | Coluna | Tipo lido pelo pandas | Exemplo de valor | Significado provável (supõe-se) |
 |---|---|---|---|---|
-| 1 | `[coluna]` | `[int64 / float64 / object]` | `[...]` | `[...]` |
-| 2 | | | | |
-| 3 | | | | |
+| 1 | `CustomerID` | `float64` | `349936.0` | Identificador do cliente |
+| 2 | `idade` | `float64` | `23.0` | Idade do cliente |
+| 3 | `sexo` | `str` | `Male` | Gênero do cliente |
+| 4 | `tempo_como_cliente` | `float64` | `13.0` | Tempo como cliente em (dias, semanas, meses, anos?) |
+| 5 | `frequencia_uso` | `float64` | `22.0` | Quantidade de usos por (dias, semanas, meses, anos?) |
+| 6 | `ligacoes_callcenter` | `float64` | `2.0` | Quantidade de ligações ao suporte |
+| 7 | `dias_atraso` | `float64` | `1.0` | Quantidade de (dias) em atraso  |
+| 8 | `assinatura` | `str` | `Standard` | Tipo de assinatura |
+| 9 | `duracao_contrato` | `str` | `Annual` | Duração do contrato |
+| 10 | `total_gasto` | `float64` | `909.58` | Valor total gasto na assinatura desde o início? |
+| 11 | `meses_ultima_interacao` | `float64` | `23.0` | Tempo desde última interação com o cliente em (meses) |
+| 12 | `cancelou` | `float64` | `0.0` | Status de cancelamento 1 = cancelou, 0 = não cancelou |
 
 ---
 
@@ -61,11 +70,16 @@ Legenda: ✅ viável · ⚠️ parcial (coluna existe, mas com ressalva) · ❌ 
 
 | # | Observação | Coluna(s) | Evidência |
 |---|---|---|---|
-| E1 | `[ex.: número lido como texto]` | `[...]` | `[ex.: dtype object; valor "R$ 10,00"]` |
-| E2 | `Tamanho do arquivo em memória (deep) `| | `11,35 MB` | 
+| E1 | `Valores nulos` | `sexo`, `tempo_como_cliente` | `info()`: `sexo` com 49.997 não nulos (3 nulos); `tempo_como_cliente` com 49.998 não nulos (2 nulos) |
+| E2 | `Colunas aparentemente inteiras lidas como decimal` | `CustomerID`, `idade`, `tempo_como_cliente`, `frequencia_uso`, `ligacoes_callcenter`, `dias_atraso`, `total_gasto`, `meses_ultima_interacao`, `cancelou`| Valores terminados por `.0` |
+| E3 | `Valores lidos como STR` | `sexo`,  `assinatura` e `duracao_contrato`| Valores como: Male, Standard e Annual |
 
 ---
 
 ## 6. Novas Perguntas em Aberto
 
-- `[ex.: o que significa a coluna X, já que não há dicionário?]`
+- Qual o periodo de `frequencia_uso` e `ligacoes_callcenter` (por mês? total desde o início?)
+- Qual a unidade de `tempo_como_cliente` (dias, meses, anos?)
+- `dias_atraso` é o atraso atual ou acumulado?
+- `total_gasto` está em qual moeda e cobre qual período?
+- Que tipo de "interação" `meses_ultima_interacao` mede?
