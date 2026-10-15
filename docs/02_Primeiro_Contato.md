@@ -43,10 +43,10 @@
 
 | Item | Esperado (Etapa 1) | Encontrado | Status |
 |---|---|---|---|
-| Granularidade | 1 linha = 1 cliente | `[...]` | ⏳ |
-| Identificador | Coluna de ID única | `[nome da coluna; nunique == nº de linhas?]` | ⏳ |
-| Variável alvo | Coluna de cancelamento (0/1 ou Sim/Não) | `[nome da coluna e valores]` | ⏳ |
-| Dados temporais | Datas que mostrem quando cancelou | `[...]` | ⏳ |
+| Granularidade | 1 linha = 1 cliente | IDs se repetem; não confirmado | ⚠️ parcial / a investigar |
+| Identificador | Coluna de ID única | `CustomerID` existe, mas não é único (`nunique() == len()`) -> `False`; 1.469 repetições| ⚠️ parcial / a investigar |
+| Variável alvo | Coluna de cancelamento (0/1 ou Sim/Não) | `cancelou` com valores `0.0` e `1.0` | ✅ confirmado |
+| Dados temporais | Datas que mostrem quando cancelou | Nenhuma coluna de data | ❌ refutado |
 
 Legenda: ✅ confirmado · ❌ refutado · ⚠️ parcial / a investigar
 
